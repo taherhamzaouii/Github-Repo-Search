@@ -1,0 +1,30 @@
+.repoItem_header {
+  display: flex;
+  align-items: center;
+}
+
+.repoItem_footer {
+  display: flex;
+  align-items: center;
+}
+
+.repoItem_header_title {
+  font-weight: 400;
+}
+
+.repoDesc {
+  margin-top: 0px;
+}
+
+.repoItem_lang {
+  font-weight: 300;
+  margin-right: 15px;
+}
+
+.repoItem_update {
+  font-weight: 300;
+}
+
+.private {
+  margin-left: 15px;
+}
