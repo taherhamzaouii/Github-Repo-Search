@@ -56,8 +56,9 @@ function Header() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
                  >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Your Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Your Repositories</MenuItem>
+                <MenuItem onClick={handleClose}>Your Project</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
                 </Menu>
            </div>  
