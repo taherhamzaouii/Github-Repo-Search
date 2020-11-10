@@ -27,8 +27,6 @@ function SideBar() {
     useEffect(() => {
         fetchData();
         },[])
-    console.log('dataaaa',data);
-    console.log('namee',data && data.data && data.data.viewer && data.data.viewer.followers && data.data.viewer.followers.edges.length )
 
     return (
         <div className='sidebar'>

@@ -54,7 +54,6 @@ function Body() {
            return  moment(da).format('dddd D MMMM Y');
           }
 
-        //   console.log(newUYDate("2020-11-09T23:08:29Z "))
       
 
 
