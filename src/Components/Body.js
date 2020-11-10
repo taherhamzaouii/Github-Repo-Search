@@ -12,6 +12,10 @@ function Body() {
     const [repos, setRepos] = useState([]);
     
     const token = localStorage.getItem('token')
+
+    const [status, setStatus] = useState([]);
+
+    
     const fetchrepos = async() => {
         fetch("https://api.github.com/graphql", {
             method: 'POST',
@@ -31,10 +35,9 @@ function Body() {
         
         fetchrepos();
         },[])
+
         const path = repos && repos.data && repos.data.viewer && repos.data.viewer.repositories && repos.data.viewer.repositories.edges && repos.data.viewer.repositories.edges
         const repoCount = repos && repos.data && repos.data.viewer && repos.data.viewer.repositories && repos.data.viewer.repositories.edges && repos.data.viewer.repositories.edges.length
-    console.log(repos);
-    // console.log('namee',repoCount )
 
         const filteredRepos = path && path.filter (rep => {
             return   rep.node && rep.node.name.toLowerCase().includes(search.toString().toLowerCase())
@@ -45,7 +48,7 @@ function Body() {
             let tab = dateString.split('T')
             let dym = tab[0].split("-")
             let y= dym[0]
-            let m= dym[1]
+            let m= dym[1] - 1
             let d= dym[2]
             var da = new Date(y, m, d);
            return  moment(da).format('dddd D MMMM Y');

@@ -11,8 +11,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 function Header() {
 
-    
-    
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.clear()
+        window.location.reload()
+    };
+  
     return (
         <div className='header'>
            <div className='header_left'>
@@ -36,9 +50,18 @@ function Header() {
                 <IconButton color='inherit' edge="start"  >
                     <AddOutlinedIcon  fontSize='medium'/>
                 </IconButton>
-                 <IconButton color='inherit' edge="start"  >
+                 <IconButton color='inherit' edge="start" onClick={handleClick}  >
                     <AccountCircleOutlinedIcon fontSize='medium'/>
                 </IconButton>
+                <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={logout} >Logout</MenuItem>
+            </Menu>
                 
            </div>  
         </div>
