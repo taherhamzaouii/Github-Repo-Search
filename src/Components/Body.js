@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import RepoItem from './RepoItem'
 import moment from 'moment'
+
 function Body() {
 
     //Search term state
@@ -25,7 +26,7 @@ function Body() {
                 Authorization: `Bearer ${token}`
             },
             body: JSON.stringify({
-                query:'{  viewer {    repositories(last:100 orderBy: {field: CREATED_AT, direction: DESC}) {      edges {        node {   isPrivate       name          description          updatedAt          primaryLanguage {            name          }        }      }    }  }}'
+                query:'{  viewer {    repositories(last:100 orderBy: {field: CREATED_AT, direction: DESC}) {      edges {        node {  url isPrivate       name          description          updatedAt          primaryLanguage {            name          }        }      }    }  }}'
             })
         })
         .then(response => response.json())
@@ -80,7 +81,7 @@ function Body() {
                 {
                     //mapping repos to RepoItem
                 filteredRepos && filteredRepos.map(el =>
-                  <RepoItem title={el.node && el.node.name} desc={el.node && el.node.description} update={dateConvert(el.node && el.node.updatedAt)} priv={el.node && el.node.isPrivate} lang={el.node && el.node.primaryLanguage && el.node.primaryLanguage.name} />
+                  <RepoItem title={el.node && el.node.name} desc={el.node && el.node.description} update={dateConvert(el.node && el.node.updatedAt)} priv={el.node && el.node.isPrivate} link={el.node && el.node.url} lang={el.node && el.node.primaryLanguage && el.node.primaryLanguage.name} />
                 )
                 }
                 

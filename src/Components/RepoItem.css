@@ -28,3 +28,12 @@
 .private {
   margin-left: 15px;
 }
+
+.repoItem_header > a {
+  text-decoration: none;
+  color: #0566d6;
+}
+
+.repoItem_header > a:hover {
+  text-decoration: underline;
+}
