@@ -4,6 +4,7 @@ import './Login.css'
 import Button from '@material-ui/core/Button';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Footer from './Footer'
+import Swal from 'sweetalert2'
 
 function Login() {
 
@@ -44,7 +45,13 @@ function Login() {
             localStorage.setItem('token', token);
             window.location.reload()
         } else {
-            alert("Something Went Wrong")
+            Swal.fire({
+                title: 'Something Went Wrong!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              })
+              
         }
     };
 
