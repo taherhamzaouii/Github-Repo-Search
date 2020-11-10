@@ -1,0 +1,31 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+  flex-direction: column;
+}
+
+.token_input {
+  margin-top: 50px;
+  width: 520px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid #e1e4e8;
+  border-radius: 5px;
+  color: black;
+  padding: 0px 12px;
+  font-size: 18px;
+}
+
+.token_button {
+  margin-top: 17px !important;
+  width: 278px;
+  background-color: #f3f4f6 !important;
+  border: 1px solid #d2d5d6 !important;
+  box-shadow: none !important;
+  height: 20px !important;
+  padding: 16px 5px !important;
+  text-transform: none !important;
+  font-weight: bold !important;
+}

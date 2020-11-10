@@ -1,18 +1,21 @@
 import './App.css';
-import Header from './Components/Header'
-import SideBar from './Components/SideBar'
-import Body from './Components/Body'
+import Main from './Components/Main'
+import Login from './Components/Login'
 
 function App() { 
 
+  const accessToken = localStorage.getItem('token')
   
   return (
     <div className="App">
-        <Header />
-        <div className='app_body'>
-          <SideBar />        
-          <Body />   
-        </div>     
+     
+     {
+        accessToken ?
+        <Main />
+         :
+        <Login /> 
+      }
+ 
     </div>
   );
 }

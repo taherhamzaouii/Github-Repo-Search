@@ -5,13 +5,13 @@ import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 import RepoItem from './RepoItem'
-
+import moment from 'moment'
 function Body() {
 
     const [search, setSearch] = useState([]);
     const [repos, setRepos] = useState([]);
     
-    const token = '447f18174decd956a69e3dd36690556cad7fcce6'
+    const token = localStorage.getItem('token')
     const fetchrepos = async() => {
         fetch("https://api.github.com/graphql", {
             method: 'POST',
@@ -40,10 +40,28 @@ function Body() {
             return   rep.node && rep.node.name.toLowerCase().includes(search.toString().toLowerCase())
         })
 
-    return (
+        function dateConvert(dateString) {
+            
+            let tab = dateString.split('T')
+            let dym = tab[0].split("-")
+            let y= dym[0]
+            let m= dym[1]
+            let d= dym[2]
+            var da = new Date(y, m, d);
+           return  moment(da).format('dddd D MMMM Y');
+          }
+
+        //   console.log(newUYDate("2020-11-09T23:08:29Z "))
+      
+
+
+
         
+
+    return (
+
         <div className='body'>
-           
+
             <div className='body_header_container'>
             <FolderOpenIcon  fontSize='medium'/>
             <h3 className='body_header_title'>Repositories</h3>
@@ -54,7 +72,7 @@ function Body() {
 
                 {
                 filteredRepos && filteredRepos.map(el =>
-                  <RepoItem title={el.node && el.node.name} desc={el.node && el.node.description} update={el.node && el.node.updatedAt} priv={el.node && el.node.isPrivate} lang={el.node && el.node.primaryLanguage && el.node.primaryLanguage.name} />
+                  <RepoItem title={el.node && el.node.name} desc={el.node && el.node.description} update={dateConvert(el.node && el.node.updatedAt)} priv={el.node && el.node.isPrivate} lang={el.node && el.node.primaryLanguage && el.node.primaryLanguage.name} />
                 )
                 }
                 
