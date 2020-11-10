@@ -10,6 +10,7 @@ function App() {
     <div className="App">
      
      {
+       //verify the token is stored in local storage to redirect the user to the main component
         accessToken ?
         <Main />
          :

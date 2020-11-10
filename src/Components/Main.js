@@ -7,6 +7,7 @@ import Footer from './Footer'
 import './Main.css'
 function Main() {
 
+    //main component that contains the Header, SideBar, Body and Footer components
 
     return (
         <div>

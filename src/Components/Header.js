@@ -10,17 +10,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 
 function Header() {
-
+    //state for the Menu 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
+    //open menu
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
   
+    //close menu
     const handleClose = () => {
       setAnchorEl(null);
     };
 
+    //function that logs the user out of his account and clears the local storage
     const logout = (e) => {
         e.preventDefault();
         localStorage.clear()

@@ -8,14 +8,16 @@ import RepoItem from './RepoItem'
 import moment from 'moment'
 function Body() {
 
+    //Search term state
     const [search, setSearch] = useState([]);
+    //repos state to store the repositories fetched
     const [repos, setRepos] = useState([]);
     
+    //getting the token stored in localStorage
     const token = localStorage.getItem('token')
 
-    const [status, setStatus] = useState([]);
 
-    
+    //fetching github repositories using Github's GraphQL v4 API
     const fetchrepos = async() => {
         fetch("https://api.github.com/graphql", {
             method: 'POST',
@@ -32,19 +34,21 @@ function Body() {
         })
     }    
     useEffect(() => {
-        
         fetchrepos();
         },[])
 
         const path = repos && repos.data && repos.data.viewer && repos.data.viewer.repositories && repos.data.viewer.repositories.edges && repos.data.viewer.repositories.edges
+
+        //number of repositories
         const repoCount = repos && repos.data && repos.data.viewer && repos.data.viewer.repositories && repos.data.viewer.repositories.edges && repos.data.viewer.repositories.edges.length
 
+        //filtering the repositories with the search term
         const filteredRepos = path && path.filter (rep => {
             return   rep.node && rep.node.name.toLowerCase().includes(search.toString().toLowerCase())
         })
 
+        //function to convert the date from the api to a more clear date
         function dateConvert(dateString) {
-            
             let tab = dateString.split('T')
             let dym = tab[0].split("-")
             let y= dym[0]
@@ -72,7 +76,9 @@ function Body() {
                 <input  placeholder='Find a repository...' onChange={e => setSearch(e.target.value)}></input>
                 <Divider className='divider' variant="fullWidth" />
 
+
                 {
+                    //mapping repos to RepoItem
                 filteredRepos && filteredRepos.map(el =>
                   <RepoItem title={el.node && el.node.name} desc={el.node && el.node.description} update={dateConvert(el.node && el.node.updatedAt)} priv={el.node && el.node.isPrivate} lang={el.node && el.node.primaryLanguage && el.node.primaryLanguage.name} />
                 )

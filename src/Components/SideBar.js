@@ -7,8 +7,13 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 
 function SideBar() {
 
+    //data state to store the data fetched from the api
     const [data, setData] = useState([]);
+
+    //getting the token stored in localStorage
     const token = localStorage.getItem('token')
+
+    //fetching the user's data  using Github's GraphQL v4 API
     const fetchData = async() => {
         fetch("https://api.github.com/graphql", {
             method: 'POST',

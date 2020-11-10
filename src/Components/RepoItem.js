@@ -3,6 +3,7 @@ import './RepoItem.css'
 import Divider from '@material-ui/core/Divider';
 import Badge from '@material-ui/core/Badge';
 
+//RepoItem that will be called by the body component to map the repos in it
 function RepoItem({title, count, desc, lang, update, priv}) {
     return (
         <div className='repoItem'>

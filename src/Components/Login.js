@@ -7,9 +7,12 @@ import Footer from './Footer'
 
 function Login() {
 
+    //state to store the token
     const [token, setToken] = useState('');
+    //state to store the status of the request 
     const [status, setStatus] = useState('');
    
+    //function to check the status of the request
     const check = async() => {
         fetch("https://api.github.com/graphql", {
             method: 'POST',
@@ -34,6 +37,7 @@ function Login() {
         check();
         },[token])
 
+    //function that will redirect the user to the main page if the token is valid
     const submitToken = (e) => {
         if(status){
             e.preventDefault();
